@@ -10436,7 +10436,7 @@ int jisuannianling()
 	{
 		int temp = year[4 - i];
 		long long int temp1 = (long long)pow(10, i - 1);
-		yeartemp = yeartemp + ((long long)(temp) - 48) * temp1;
+		yeartemp = int(yeartemp + ((long long)(temp)-48) * temp1);
 	}
 	time_t nowtime;
 	struct tm* p;;
@@ -10452,7 +10452,7 @@ int shenfenzhenghaojiaoyan()
 	for (int i = 1; i <= 17; i++)
 	{
 		int a = 17 - (i - 1);
-		long int b = pow(2, a);
+		long int b = (long)pow(2, a);
 		int c = b % 11;
 		int d = c * (shenfenzhenghao[i - 1] - 48);
 		sum = sum + d;
@@ -10516,8 +10516,8 @@ int main()
 					for (int i = 1; i <= 4; i++)
 					{
 						int temp = year[4 - i];
-						long long int temp1 = pow(10, i - 1);
-						yeartemp = yeartemp + ((long long)(temp) - 48) * temp1;
+						long long int temp1 = (long long)pow(10, i - 1);
+						yeartemp = int(yeartemp + ((long long)(temp)-48) * temp1);
 					}
 					if (
 						((month == "01" or month == "03" or month == "05" or month == "07" or month == "09" or month == "11") and (day >= "01" and day <= "31"))
@@ -10532,8 +10532,8 @@ int main()
 						for (int i = 1; i <= 6; i++)
 						{
 							long int temp = diqu[6 - i];
-							long int temp1 = pow(10, i - 1);
-							diqutemp = diqutemp + ((long long)(temp) - 48) * temp1;
+							long int temp1 = (long)pow(10, i - 1);
+							diqutemp = diqutemp + ((long long)(temp)-48) * temp1;
 						}
 						string a;
 						a = shenfenzhengdiqu();
@@ -10611,8 +10611,8 @@ int main()
 		for (int i = 1; i <= 6; i++)
 		{
 			long int temp = diqu[6 - i];
-			long int temp1 = pow(10, i - 1);
-			diqutemp = diqutemp + ((long long)(temp) - 48) * temp1;
+			long int temp1 = (long)pow(10, i - 1);
+			diqutemp = diqutemp + ((long long)(temp)-48) * temp1;
 		}
 		cout << "出生地：" << shenfenzhengdiqu() << endl;
 		system("pause");
