@@ -33,15 +33,15 @@ int GetAge(string ID, string& year)
 }
 int GetCheck(string ID)
 {
+	int times[17] = { 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2 };
 	int sum = 0;
-	for (int i = 1; i <= 17; i++)
+	for (int i = 0; i < 17; i++)
 	{
-		int a = 17 - (i - 1);
-		int b = int(pow(2, a));
-		int d = b % 11 * (ID[i - 1] - 48);
-		sum = sum + d;
+		sum += (ID[i] - 48) * times[i];
 	}
-	return (12 - sum % 11) % 11;
+	int remain = sum % 11;
+	int judge[11] = { 1,0,10,9,8,7,6,5,4,3,2 };
+	return judge[remain];
 }
 int main()
 {
