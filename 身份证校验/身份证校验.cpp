@@ -1,6 +1,5 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
-#include <iomanip>
 #include <Windows.h>
 #include <ctime>
 #include "Getregion.h"
@@ -17,15 +16,13 @@ struct tm1
 	int tm_yday;
 	int tm_isdst;
 };
-int GetAge(string ID,string &year)
+int GetAge(string ID, string& year)
 {
 	year = ID.substr(6, 4);
 	int yeartemp = 0;
 	for (int i = 1; i <= 4; i++)
 	{
-		int temp = year[4 - i];
-		float temp1 = pow(10, i - 1);
-		yeartemp = yeartemp + ((temp)-48) * temp1;
+		yeartemp = yeartemp + ((year[4 - i]) - 48) * int(pow(10, i - 1));
 	}
 	time_t nowtime;
 	struct tm* p;;
@@ -40,15 +37,11 @@ int GetCheck(string ID)
 	for (int i = 1; i <= 17; i++)
 	{
 		int a = 17 - (i - 1);
-		long int b = (long)pow(2, a);
-		int c = b % 11;
-		int d = c * (ID[i - 1] - 48);
+		int b = int(pow(2, a));
+		int d = b % 11 * (ID[i - 1] - 48);
 		sum = sum + d;
 	}
-	int e = sum % 11;
-	int f = 12 - e;
-	int g = f % 11;
-	return g;
+	return (12 - sum % 11) % 11;
 }
 int main()
 {
@@ -93,7 +86,7 @@ int main()
 		check = GetCheck(ID);
 		if (check == ID[17] - 48 or check == ID[17] - 78 or check == ID[17] - 110)
 		{
-			int nianling = GetAge(ID,year);
+			int nianling = GetAge(ID, year);
 			if (nianling >= 0 and nianling <= 150)
 			{
 				year = ID.substr(6, 4);
@@ -194,7 +187,7 @@ int main()
 		month = ID.substr(10, 2);
 		day = ID.substr(12, 2);
 		cout << "生日：" << year << "/" << month << "/" << day << endl;
-		int nianling = GetAge(ID,year);
+		int nianling = GetAge(ID, year);
 		cout << "年龄：" << nianling << "岁" << endl;
 		string diqu;
 		diqu = ID.substr(0, 6);
