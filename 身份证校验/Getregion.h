@@ -1,7 +1,7 @@
 using namespace std;
-string GetRegion(int diqutemp)
+string GetRegion(int area)
 {
-	switch (diqutemp)
+	switch (area)
 	{
 	case 110000:
 		return"±±¾©ÊÐ";
