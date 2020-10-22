@@ -24,16 +24,15 @@ int GetAge(string ID,string &year)
 	for (int i = 1; i <= 4; i++)
 	{
 		int temp = year[4 - i];
-		long long int temp1 = (long long)pow(10, i - 1);
-		yeartemp = int(yeartemp + ((long long)(temp)-48) * temp1);
+		float temp1 = pow(10, i - 1);
+		yeartemp = yeartemp + ((temp)-48) * temp1;
 	}
 	time_t nowtime;
 	struct tm* p;;
 	time(&nowtime);
 	p = localtime(&nowtime);
 	int systemyear = p->tm_year + 1900;
-	int nianling = systemyear - yeartemp;
-	return nianling;
+	return systemyear - yeartemp;
 }
 int GetCheck(string ID)
 {
