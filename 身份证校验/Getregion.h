@@ -1,5 +1,5 @@
 using namespace std;
-string GetRegion(int area)
+string GetRegion(int &area)
 {
 	switch (area)
 	{
