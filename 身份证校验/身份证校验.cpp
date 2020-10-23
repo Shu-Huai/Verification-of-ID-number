@@ -16,7 +16,7 @@ struct tm1
 	int tm_yday;
 	int tm_isdst;
 };
-int GetAge(string ID, string& year)
+int GetAge(string &ID, string& year)
 {
 	year = ID.substr(6, 4);
 	int yeartemp = 0;
@@ -31,7 +31,7 @@ int GetAge(string ID, string& year)
 	int systemyear = p->tm_year + 1900;
 	return systemyear - yeartemp;
 }
-int GetCheck(string ID)
+int GetCheck(string &ID)
 {
 	int times[17] = { 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2 };
 	int sum = 0;
